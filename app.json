@@ -1,8 +1,13 @@
 {
   "expo": {
     "scheme": "acme",
+    "icons": "./assets/icon.png",
     "web": {
       "bundler": "metro"
+    },
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain"
     },
     "plugins": [
       "expo-router"
