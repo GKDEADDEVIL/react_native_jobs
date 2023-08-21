@@ -8,17 +8,21 @@
       "expo-router"
     ],
     "name": "react_native_jobs",
-    "slug": "react_native_jobs",
+    "slug": "quickjobs",
     "extra": {
       "router": {
         "origin": false
       },
       "eas": {
-        "projectId": "e9d5a8d0-f8a2-4646-9b73-46602f09aad8"
+        "projectId": "5acc09a0-cd50-4842-bc07-5b4302b9cb9c"
       }
     },
     "android": {
       "package": "com.gkdeaddevil.react_native_jobs"
-    }
+    },
+    "ios": {
+      "bundleIdentifier": "QuickJobs"
+    },
+    "owner": "gkdeaddevil"
   }
 }
