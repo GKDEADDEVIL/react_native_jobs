@@ -1,21 +1,17 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  ActivityIndicator,
-} from "react-native";
+import React from "react";
 import { useRouter } from "expo-router";
+import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 
-import { COLORS} from "../../../constants";
 import styles from "./nearbyjobs.style";
-import useFetch from "./../../../hook/useFetch";
-import NearbyJobCard from './../../common/cards/nearby/NearbyJobCard';
+import { COLORS } from "../../../constants";
+import NearbyJobCard from "../../common/cards/nearby/NearbyJobCard";
+import useFetch from "../../../hook/useFetch";
 
-const NearbyJobs = () => {
+const Nearbyjobs = () => {
   const router = useRouter();
   const { data, isLoading, error } = useFetch("search", {
-    query: "React Developer",
-    num_pages: 1,
+    query: "web development",
+    num_pages: "1",
   });
 
   return (
@@ -23,32 +19,21 @@ const NearbyJobs = () => {
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Nearby jobs</Text>
         <TouchableOpacity>
-          <Text style={styles.headerBtn}> Show all</Text>
+          <Text style={styles.headerBtn}>Show all</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.cardsContainer}>
         {isLoading ? (
-          <ActivityIndicator size="large" colors={COLORS.primary} /> // loader animation if it is loading
+          <ActivityIndicator size='large' color={COLORS.primary} />
         ) : error ? (
-          <Text>Something Went wrong</Text> //if error then display msg
+          <Text>Something went wrong</Text>
         ) : (
-          // <FlatList
-          //   data={[1,2,3,4,5,6,7,8,9]}
-          //   renderItem={({ item }) => (
-          //     <PopularJobCard
-          //       item = {item}
-          //     />
-          //   )}
-          //   keyExtractor={item => item?.job_id}
-          //   contentContainerStyle={{ columnGap: SIZES.medium }}
-          //   horizontal
-          // />
           data?.map((job) => (
-            <NearbyJobCard 
+            <NearbyJobCard
               job={job}
               key={`nearby-job-${job.job_id}`}
-              handleNavgate={() => router.push(`/job-detail/${job.job_id}`)}
+              handleNavigate={() => router.push(`/job-details/${job.job_id}`)}
             />
           ))
         )}
@@ -57,4 +42,4 @@ const NearbyJobs = () => {
   );
 };
 
-export default NearbyJobs;
+export default Nearbyjobs;
